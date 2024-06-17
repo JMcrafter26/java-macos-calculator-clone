@@ -77,6 +77,21 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("You clicked x");
     }
 
+    @FXML
+    void power2Action(ActionEvent event) {
+        System.out.println("You clicked power2");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.pow(number, 2);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
     // negateAction
     @FXML
     void negateAction(ActionEvent event) {
@@ -225,6 +240,7 @@ public class FXMLDocumentController implements Initializable {
         number = handlePeriodicNumbers(number);
 
         resultBtn.setText(number);
+
         int fontSize = 60;
         if (number.length() > 6) {
             fontSize = 40;

@@ -107,6 +107,7 @@ public class Taschenrechner extends Application {
         stage.setMinHeight(480);
         stage.setMaximized(false);
 
+    
         stage.show();
     }
 
@@ -116,5 +117,4 @@ public class Taschenrechner extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }
