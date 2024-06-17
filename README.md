@@ -1,7 +1,7 @@
 # MacOs Calculator Clone in Java
 
 <div align="center">
-  <img src="images/image1.jpg" alt="Screenshot" />
+  <img src="src/icon.png" alt="Icon" />
 </div>
 
 This is a simple calculator clone for MacOS in Java. It is a simple project for my Java class. It is a simple calculator that can do the basics.
@@ -38,6 +38,13 @@ I think you know how to use a calculator, but here are some instructions:
 
 - Resize the window to see a more advanced calculator. It has more functions. (like square root, power, etc.)
 - Click on the result to delete the last digit
+
+## Screenshots
+
+<div style="max-width: 80%">
+  <img src="images/image1.jpg" alt="Simple Mode" />
+  <img src="images/image2.jpg" alt="Expert Mode" />
+</div>
 
 ## Known Issues
 
