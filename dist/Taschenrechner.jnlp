@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Taschenrechner.jnlp">
+  <information>
+    <title>Taschenrechner</title>
+    <vendor>mohrjohn</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Taschenrechner.jar" size="499031" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="taschenrechner.Taschenrechner"  name="Taschenrechner" />
+  <update check="always"/>
+</jnlp>

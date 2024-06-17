@@ -1,0 +1,96 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 06.06.2024, 08:41:07
+    Author     : mohrjohn
+*/
+
+/* 
+JavaFX CSS
+Macos Calculator Clone
+*/
+
+/* Root is a gridpane */
+.root {
+    /* -fx-pref-height: 860px; */
+    /* -fx-pref-width: 680px; */
+
+    -fx-pref-height: 430px;
+    -fx-pref-width: 340px;
+
+    /* -fx-grid-lines-visible: true; */
+    -fx-background-color: #2c2d2f;
+    /* -fx-font-family: 'Nunito Sans'; */
+    -fx-font-family: 'Inter';
+
+    /* -fx-min-width: 680px; */
+
+    /* -fx-scale-x: 0.5; */
+    /* -fx-scale-y: 1.0; */
+}
+
+.root Line {
+    /* -fx-stroke: #2c2d2f; */
+}
+
+.button {
+    -fx-pref-height: 63px;
+    -fx-max-height: 999999px; /* Use a large number instead of MAX_VALUE */
+    -fx-max-width: 999999px; /* Use a large number instead of MAX_VALUE */
+    /* -fx-min-height: USE_PREF_SIZE; */
+    /* -fx-min-width: USE_COMPUTED_SIZE; */
+    -fx-border-radius: 0px;
+    -fx-font-size: 30px;
+    -fx-border-color: #2c2d2f;
+}
+
+.button:hover {
+    /* effect make button darker */
+    /* -fx-effect: color-burn(0.5); */
+
+    /* opacity */
+    -fx-opacity: 0.8;
+}
+
+.light-grey {
+    -fx-background-color: #5f6062;
+    -fx-text-fill: #ffffff;
+}
+
+
+.bg-grey {
+    -fx-background-color: #2c2d2f;
+    -fx-text-fill: #ffffff;
+}
+
+.dark-grey {
+    -fx-background-color: #404143;
+    -fx-text-fill: #ffffff;
+}
+
+.orange {
+    -fx-background-color: #fd9e2a;
+    -fx-text-fill: #ffffff;
+}
+
+.zero {
+    --zeroW: calc(50% - 50px);
+    
+    /* -fx-text-alignment: left; */
+    /* -fx-alignment: CENTER_LEFT; */
+    /* padding left: calc(center of the width / 2) */
+    /* -fx-padding: 0 0 0 50px; */
+}
+
+.plusMinus {
+    -fx-font-size: 25px;
+}
+
+.result {
+    -fx-font-size: 60px;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: right;
+    -fx-alignment: CENTER_RIGHT;
+}
