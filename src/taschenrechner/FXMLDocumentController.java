@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
  */
 package taschenrechner;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import org.w3c.dom.Node;
 
 import javafx.event.ActionEvent;
@@ -18,6 +16,7 @@ import java.io.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -161,13 +160,151 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    void cosAction(ActionEvent event) {
+        System.out.println("You clicked cos");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.cos(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void tanAction(ActionEvent event) {
+        System.out.println("You clicked tan");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.tan(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void sinhAction(ActionEvent event) {
+        System.out.println("You clicked sinh");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.sinh(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void coshAction(ActionEvent event) {
+        System.out.println("You clicked cosh");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.cosh(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void tanhAction(ActionEvent event) {
+        System.out.println("You clicked tanh");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.tanh(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void logAction(ActionEvent event) {
+        System.out.println("You clicked log");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.log(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void randomAction(ActionEvent event) {
+        System.out.println("You clicked random");
+        double number = Math.random();
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void piAction(ActionEvent event) {
+        System.out.println("You clicked pi");
+        currentNumber = String.valueOf(Math.PI);
+        updateDisplay("π");
+    }
+
+    @FXML
+    void copyResultAction(ActionEvent event) {
+        System.out.println("Copying result...");
+        String result = resultBtn.getText();
+        if (result.equals("Error")) {
+            return;
+        }
+        try {
+            java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new java.awt.datatransfer.StringSelection(result), null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Copied result: " + result);
+    }
+
+    @FXML
     void infoAction(ActionEvent event) {
         System.out.println("You clicked info");
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("MacOS Calculator");
-        alert.setHeaderText("This application was created by John M.
+        alert.setHeaderText("This application was created by John M. aka JMcrafter26.");
+        alert.setContentText("This is a simple calculator clone for MacOS in Java. It is a simple project for my Java class. It is a simple calculator that can do the basics.\n\nVersion: 1.2");
 
-        alert.showAndWait();
+        // add GitHub link
+        ButtonType githubButton = new ButtonType("GitHub");
+        alert.getButtonTypes().add(githubButton);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == githubButton) {
+                System.out.println("Opening GitHub...");
+                try {
+                    java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://github.com/JMcrafter26/java-macos-calculator-clone"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }});
+        
+        
     }
 
     // negateAction
@@ -206,6 +343,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void handleDelete(ActionEvent event) {
         System.out.println("You clicked delete");
+        // if number is not a number, delete the number
+        if (currentNumber.equals("Infinity") || currentNumber.equals("-Infinity") || currentNumber.equals("NaN")) {
+            currentNumber = "";
+            updateDisplay(currentNumber);
+            return;
+        }
 
         if (currentNumber.length() == 0 && firstNumber.length() == 0) {
             return;
@@ -242,7 +385,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             currentNumber += ".";
         }
-        updateDisplay(currentNumber);
+        updateDisplay(currentNumber + "");
     }
 
     public void calculationSetup(String calculationType) {
@@ -313,6 +456,7 @@ public class FXMLDocumentController implements Initializable {
             number = "0";
         }
 
+
         // check if number is periodic
         number = handlePeriodicNumbers(number);
 
@@ -348,30 +492,6 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("Lolol");
         currentNumber += number;
         updateDisplay(currentNumber);
-    }
-
-    public void test() {
-        // To check what math functions are available
-
-        /*
-        Square root: Math.sqrt()
-        Square root 3: Math.cbrt()
-        Power 2: Math.pow()
-        Power 3: Math.pow()
-        Sin: Math.sin()
-        Cos: Math.cos()
-        Tan: Math.tan()
-        Sinh: Math.sinh()
-        Cosh: Math.cosh()
-        Tanh: Math.tanh()
-        Logarithm: Math.log()
-        Exponential: Math.exp()
-        Random: Math.random()
-        PI: Math.PI
-        Copy Result: resultBtn.getText()
-
-        (15 items)
-         */
     }
 
     // detect periodic numbers (e.g. 1/3 = 0.3333333333333333 or 0.2222222222222223) and round them

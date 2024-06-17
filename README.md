@@ -62,6 +62,7 @@ The project is created by me, things that I used are:
 - [JavaFX](https://openjfx.io/) - For the GUI
 - [Inter Font](https://rsms.me/inter/) - For the font
 - [Apple Calculator](https://support.apple.com/guide/calculator/welcome/mac) - For the design and inspiration
+- StackOverflow and my Brain - For the code
 
 You made it to the end of the README. Congratulations! 🎉
 
