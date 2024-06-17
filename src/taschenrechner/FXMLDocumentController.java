@@ -16,16 +16,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.io.*;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  *
- * @author mohrjohn
+ * @author John M.
  */
 public class FXMLDocumentController implements Initializable {
+
     private String firstNumber = "";
     private String currentNumber = "";
     private boolean isOperatorClicked = false;
-
 
     @FXML
     Button resultBtn;
@@ -75,6 +77,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void hadleX(ActionEvent event) {
         System.out.println("You clicked x");
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Hmmm...");
+        alert.setHeaderText("It looks like you discovered a hidden feature!");
+
+        alert.showAndWait();
     }
 
     @FXML
@@ -90,6 +98,76 @@ public class FXMLDocumentController implements Initializable {
             currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
         }
         updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void power3Action(ActionEvent event) {
+        System.out.println("You clicked power3");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.pow(number, 3);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void squareRootAction(ActionEvent event) {
+        System.out.println("You clicked squareRoot");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.sqrt(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void squareRoot3Action(ActionEvent event) {
+        System.out.println("You clicked squareRoot3");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.cbrt(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void sinAction(ActionEvent event) {
+        System.out.println("You clicked sin");
+        if (currentNumber.equals("")) {
+            return;
+        }
+        double number = Double.parseDouble(currentNumber);
+        number = Math.sin(number);
+        currentNumber = String.valueOf(number);
+        if (currentNumber.endsWith(".0")) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 2);
+        }
+        updateDisplay(currentNumber);
+    }
+
+    @FXML
+    void infoAction(ActionEvent event) {
+        System.out.println("You clicked info");
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("MacOS Calculator");
+        alert.setHeaderText("This application was created by John M.
+
+        alert.showAndWait();
     }
 
     // negateAction
@@ -124,34 +202,34 @@ public class FXMLDocumentController implements Initializable {
         updateDisplay(currentNumber);
     }
 
-        // if the user clicks the delete button
-        @FXML
-        void handleDelete(ActionEvent event) {
-            System.out.println("You clicked delete");
-    
-            if (currentNumber.length() == 0 && firstNumber.length() == 0) {
-                return;
-            }
-            if (currentNumber.length() > 0) {
-                currentNumber = currentNumber.substring(0, currentNumber.length() - 1);
-                updateDisplay(currentNumber);
-                return;
-            }
-            if (firstNumber.length() > 0) {
-                firstNumber = firstNumber.substring(0, firstNumber.length() - 1);
-                updateDisplay(firstNumber);
-                return;
-            }
+    // if the user clicks the delete button
+    @FXML
+    void handleDelete(ActionEvent event) {
+        System.out.println("You clicked delete");
+
+        if (currentNumber.length() == 0 && firstNumber.length() == 0) {
+            return;
         }
-    
-        @FXML
-        void handleClear(ActionEvent event) {
-            System.out.println("You clicked clear");
-            currentNumber = "";
-            firstNumber = "";
-    
+        if (currentNumber.length() > 0) {
+            currentNumber = currentNumber.substring(0, currentNumber.length() - 1);
             updateDisplay(currentNumber);
+            return;
         }
+        if (firstNumber.length() > 0) {
+            firstNumber = firstNumber.substring(0, firstNumber.length() - 1);
+            updateDisplay(firstNumber);
+            return;
+        }
+    }
+
+    @FXML
+    void handleClear(ActionEvent event) {
+        System.out.println("You clicked clear");
+        currentNumber = "";
+        firstNumber = "";
+
+        updateDisplay(currentNumber);
+    }
 
     @FXML
     void handleDot(ActionEvent event) {
@@ -167,10 +245,10 @@ public class FXMLDocumentController implements Initializable {
         updateDisplay(currentNumber);
     }
 
-    public void calculationSetup(String calculationType){
+    public void calculationSetup(String calculationType) {
         System.out.println("You clicked: " + calculationType);
         this.calculationType = calculationType;
-     
+
         if (!firstNumber.equals("")) {
             System.out.println("First number: " + firstNumber);
             calculate();
@@ -229,7 +307,6 @@ public class FXMLDocumentController implements Initializable {
         updateDisplay(firstNumber);
     }
 
-
     public void updateDisplay(String number) {
         // resultBtn.setText(currentNumber);
         if (number.equals("")) {
@@ -238,6 +315,14 @@ public class FXMLDocumentController implements Initializable {
 
         // check if number is periodic
         number = handlePeriodicNumbers(number);
+
+        if(number.equals("Infinity")) {
+            number = "∞";
+        } else if(number.equals("-Infinity")) {
+            number = "-∞";
+        } else if(number.equals("NaN")) {
+            number = "Error";
+        }
 
         resultBtn.setText(number);
 
@@ -256,7 +341,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void addNumber(String number) {
-        if(currentNumber.equals("") && number.equals("0")){
+        if (currentNumber.equals("") && number.equals("0")) {
             return;
         }
         System.out.println("Number: " + number);
@@ -286,7 +371,7 @@ public class FXMLDocumentController implements Initializable {
         Copy Result: resultBtn.getText()
 
         (15 items)
-        */
+         */
     }
 
     // detect periodic numbers (e.g. 1/3 = 0.3333333333333333 or 0.2222222222222223) and round them
@@ -321,7 +406,6 @@ public class FXMLDocumentController implements Initializable {
         }
         return number;
     }
-
 
     // listen for key presses (e.g. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 or +, -, *, /)
     public void handleKeyPress(Scene scene) {

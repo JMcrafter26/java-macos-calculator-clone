@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  *
- * @author mohrjohn
+ * @author John M.
  */
 public class Taschenrechner extends Application {
     @FXML
