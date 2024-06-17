@@ -2,7 +2,7 @@
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Taschenrechner.jnlp">
   <information>
     <title>Taschenrechner</title>
-    <vendor>mohrjohn</vendor>
+    <vendor>mjohn</vendor>
     <description>null</description>
     <offline-allowed/>
   </information>
