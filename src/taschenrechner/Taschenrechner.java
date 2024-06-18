@@ -66,6 +66,7 @@ public class Taschenrechner extends Application {
                     isExpertMode[0] = true;
                     stage.setMinWidth(820);
                     System.out.println("Successfully switched to expert mode");
+                    System.out.println("Please just ignore the error message below, or fix it if you know how to");
                 } catch (IOException e) {
                     System.out.println("Failed to switch to expert mode");
                     e.printStackTrace();

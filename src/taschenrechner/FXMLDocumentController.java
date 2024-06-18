@@ -5,13 +5,11 @@
 package taschenrechner;
 import java.net.URL;
 import java.util.ResourceBundle;
-import org.w3c.dom.Node;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import java.io.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -73,16 +71,6 @@ public class FXMLDocumentController implements Initializable {
         calculationSetup("*");
     }
 
-    @FXML
-    void hadleX(ActionEvent event) {
-        System.out.println("You clicked x");
-
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Hmmm...");
-        alert.setHeaderText("It looks like you discovered a hidden feature!");
-
-        alert.showAndWait();
-    }
 
     @FXML
     void power2Action(ActionEvent event) {
@@ -361,7 +349,6 @@ public class FXMLDocumentController implements Initializable {
         if (firstNumber.length() > 0) {
             firstNumber = firstNumber.substring(0, firstNumber.length() - 1);
             updateDisplay(firstNumber);
-            return;
         }
     }
 
@@ -460,12 +447,18 @@ public class FXMLDocumentController implements Initializable {
         // check if number is periodic
         number = handlePeriodicNumbers(number);
 
-        if(number.equals("Infinity")) {
-            number = "∞";
-        } else if(number.equals("-Infinity")) {
-            number = "-∞";
-        } else if(number.equals("NaN")) {
-            number = "Error";
+        switch (number) {
+            case "Infinity":
+                number = "∞";
+                break;
+            case "-Infinity":
+                number = "-∞";
+                break;
+            case "NaN":
+                number = "Error";
+                break;
+            default:
+                break;
         }
 
         resultBtn.setText(number);
@@ -489,7 +482,6 @@ public class FXMLDocumentController implements Initializable {
             return;
         }
         System.out.println("Number: " + number);
-        System.out.println("Lolol");
         currentNumber += number;
         updateDisplay(currentNumber);
     }
@@ -531,6 +523,7 @@ public class FXMLDocumentController implements Initializable {
     public void handleKeyPress(Scene scene) {
         scene.setOnKeyPressed(e -> {
             System.out.println("Key Pressed: " + e.getText());
+            System.out.println("I don't know why this is not working :(");
             // check if key is a digit
             if (Character.isDigit(e.getText().charAt(0))) {
                 // trigger handleNumber method
