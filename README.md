@@ -6,6 +6,8 @@
 
 This is a simple calculator clone for MacOS in Java. It is a simple project for my Java class. It is a simple calculator that can do the basics.
 
+[![wakatime](https://wakatime.com/badge/github/JMcrafter26/java-macos-calculator-clone.svg)](https://wakatime.com/badge/github/JMcrafter26/java-macos-calculator-clone) (time only recorded at home)
+
 ## Installation
 
 ### Using the JAR file
