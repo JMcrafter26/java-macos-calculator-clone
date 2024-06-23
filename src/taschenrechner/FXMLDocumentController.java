@@ -276,7 +276,7 @@ public class FXMLDocumentController implements Initializable {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("MacOS Calculator");
         alert.setHeaderText("This application was created by John M. aka JMcrafter26.");
-        alert.setContentText("This is a simple calculator clone for MacOS in Java. It is a simple project for my Java class. It is a simple calculator that can do the basics.\n\nVersion: 1.2");
+        alert.setContentText("This is a simple calculator clone for MacOS in Java. It is a simple project for my Java class. It is a simple calculator that can do the basics.\n\nVersion: 1.4");
 
         // add GitHub link
         ButtonType githubButton = new ButtonType("GitHub");
