@@ -39,6 +39,7 @@ I think you know how to use a calculator, but here are some instructions:
 ## Additional Functions
 
 - Resize the window to see a more advanced calculator. It has more functions. (like square root, power, etc.)
+  - Drag the window from the left or right side to resize it
 - Click on the result to delete the last digit
 
 ## Screenshots
