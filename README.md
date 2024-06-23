@@ -1,4 +1,4 @@
-# MacOs Calculator Clone in Java
+# MacOS Calculator Clone in Java
 
 <div align="center">
   <img src="src/icon.png" alt="Icon" />
