@@ -377,13 +377,21 @@ public class FXMLDocumentController implements Initializable {
 
     public void calculationSetup(String calculationType) {
         System.out.println("You clicked: " + calculationType);
-        this.calculationType = calculationType;
+        System.out.println("Old operator: " + this.calculationType);
+
+   
 
         if (!firstNumber.equals("")) {
             System.out.println("First number: " + firstNumber);
             calculate();
+            this.calculationType = calculationType;
+            // firstNumber = currentNumber;
             return;
         }
+
+        this.calculationType = calculationType;
+        System.out.println("New operator: " + this.calculationType);
+
         System.out.println("Current number: " + currentNumber);
         this.calculationType = calculationType;
         firstNumber = currentNumber;
@@ -520,6 +528,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     // listen for key presses (e.g. 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 or +, -, *, /)
+    // I don't know why this is not working :'(
     public void handleKeyPress(Scene scene) {
         scene.setOnKeyPressed(e -> {
             System.out.println("Key Pressed: " + e.getText());
